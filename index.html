@@ -18,6 +18,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             display: inline-block;
+            max-width: 400px;
         }
         h1 {
             color: #ff6f61;
@@ -51,10 +52,35 @@
 </head>
 <body>
     <div class="container">
-        <h1>¡Hola Valen Linda! 😊</h1>
-        <p>Tu inge de confianza quiere preguntarte algo muy importante... ¿Quieres ir a cenar conmigo?</p>
-        <a class="btn btn-yes" href="https://wa.me/573245640407?text=¡Sí!%20Me%20encantaría%20ir%20a%20comer%20contigo%20<3" target="_blank">Sí, quiero ir</a>
-        <a class="btn btn-no" href="https://wa.me/573245640407?text=Lo%20siento,%20pero%20no%20puedo.%20Gracias%20por%20la%20invitación%20</3" target="_blank">No, pero gracias</a>
+        <h1 id="titulo">¡Hola Valen Linda! 😊</h1>
+        <p id="pregunta">Tu inge de confianza tiene una pregunta muy importante para ti...</p>
+        <button class="btn btn-yes" onclick="siguientePregunta()">Siguiente</button>
+        <div id="opciones" style="display: none;">
+            <a class="btn btn-yes" href="https://wa.me/573245640407?text=¡Sí!%20Me%20encantaría%20ir%20a%20comer%20contigo%20🥰" target="_blank">Sí, quiero ir</a>
+            <a class="btn btn-no" href="https://wa.me/573245640407?text=Lo%20siento,%20pero%20no%20puedo.%20Gracias%20por%20la%20invitación%20😊" target="_blank">No, pero gracias</a>
+        </div>
     </div>
+    
+    <script>
+        let preguntas = [
+            "¿Estás lista? 😏",
+            "¿Segura que lo estás? 🤔",
+            "Espero que sí lo estés... 😜",
+            "Porque esto es importante... 😍",
+            "Ahora sí... ¿Quieres ir a cenar conmigo? 🍽️💕"
+        ];
+        let index = 0;
+        
+        function siguientePregunta() {
+            if (index < preguntas.length) {
+                document.getElementById("pregunta").textContent = preguntas[index];
+                index++;
+            } else {
+                document.getElementById("pregunta").style.display = "none";
+                document.querySelector("button").style.display = "none";
+                document.getElementById("opciones").style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
